@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Upload</title>
+    <link
+      rel="shortcut icon"
+      href="./Assets/Images/favicon.ico.jpg"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body class="font-pop bg-gray-200">
+    <!-- Header Section -->
+    <header class="bg-black text-white text-sm py-2">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div>
+          <span class="mr-4">📞 08067663986, 08071729330</span>
+          <span>✉️ hello@allicomtravels.com</span>
+        </div>
+        <div class="flex space-x-4">
+          <a
+            href="https://web.facebook.com/allicomtravels"
+            class="text-white hover:text-indigo-400"
+            aria-label="Visit our Facebook"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="white"
+            >
+              <path
+                d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/allicomtravels"
+            class="text-white hover:text-indigo-400"
+            aria-label="Visit our instagram"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              class="h-5 w-5"
+              fill="white"
+            >
+              <path
+                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://x.com/allicomtravels"
+            class="text-white hover:text-indigo-400"
+            aria-label="Visit our Twitter"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              fill="white"
+              class="h-5 w-5"
+            >
+              <path
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/allicom-travels/posts/?feedView=all"
+            class="text-white hover:text-indigo-400"
+            aria-label="Visit our LinkedIn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              fill="white"
+              class="h-5 w-5"
+            >
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-300 shadow-md">
+      <div
+        class="container mx-auto flex justify-between items-center py-4 px-4"
+      >
+        <!-- Logo Section -->
+        <div class="flex items-center space-x-3">
+          <img
+            src="./Assets/Images/allicom travels logo.png"
+            alt="Travel Logo"
+            class="h-10 w-auto"
+          />
+          <a href="#" class="text-2xl font-bold text-indigo-600"
+            >Allicom Tourism</a
+          >
+        </div>
+
+        <!-- Hamburger Button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden flex items-center justify-center w-10 h-10 rounded-md bg-indigo-600 text-white hover:bg-indigo-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+
+        <!-- Full Menu for Desktop -->
+        <ul
+          class="hidden lg:flex space-x-6 text-gray-700 font-medium"
+          id="desktop-menu"
+        >
+          <li><a href="#" class="hover:text-blue-500">Home</a></li>
+          <li>
+            <a href="./services.html" class="hover:text-blue-500">Services</a>
+          </li>
+          <li>
+            <a href="./contact.html" class="hover:text-blue-500">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div
+        id="mobile-menu"
+        class="lg:hidden hidden flex flex-col bg-gray-300 space-y-2 px-4 py-4"
+      >
+        <a href="#" class="block text-gray-700 hover:text-blue-500">Home</a>
+        <a
+          href="./services.html"
+          class="block text-gray-700 hover:text-blue-500"
+          >Services</a
+        >
+        <a href="./contact.html" class="block text-gray-700 hover:text-blue-500"
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <div class="container mx-auto my-12">
+      <div
+        class="text-center container mx-auto bg-white rounded-xl shadow-lg p-8 space-y-6"
+        id="products"
+      >
+        <h1 class="text-4xl font-bold text-indigo-800 mb-4">
+          PRODUCTS & SERVICES SUPPLIER PORTAL
+        </h1>
+        <h5 class="text-xl text-gray-600 mb-4">
+          Welcome to Allicom tourism, the largest Africa tourism platform for
+          suppliers to place/integrate their products and services
+        </h5>
+        <div class="space-y-4 text-gray-700">
+          <p class="text-base leading-relaxed">
+            As a tour operator or Car hire company or hotel properties owner
+            with large inventory, it is not always easy to source for potential
+            customers and increase the sales. At Allicom tourism, we can help
+            you to tap into a new audience and establish a solid agent customer
+            base, regardless of whether you’re a supplier of sightseeing/tour or
+            transfers or hotels or restaurants. We’ll enable you to expand your
+            business by reaching out to travel agents and general public that
+            you might not normally be visible to, and reaches out to thousands
+            of agents internationally.
+          </p>
+          <p class="text-base leading-relaxed">
+            Click on below button to supply your products/services to our
+            platform.
+          </p>
+        </div>
+        <div class="pt-6 flex flex-wrap justify-center gap-4">
+          <button
+            onclick="toggleForm()"
+            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-md"
+          >
+            Tour operator
+          </button>
+          <button
+            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-md"
+          >
+            Hotel Property
+          </button>
+          <button
+            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-md"
+          >
+            Car Hire Company
+          </button>
+          <button
+            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-md"
+          >
+            Restaurant
+          </button>
+          <button
+            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-md"
+          >
+            Event
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="tour-operator-form"
+        class="hidden mt-8 mx-auto container border border-gray-200 p-6"
+      >
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800 text-center">
+          Tour Operator Service
+        </h2>
+        <div id="inputPage">
+          <form id="tourForm">
+            <div class="space-y-6">
+              <!-- First Row -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    for="city"
+                    >City:</label
+                  >
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                <div></div>
+              </div>
+
+              <!-- Row 2 -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    for="country"
+                    >Country:</label
+                  >
+                  <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                <div></div>
+              </div>
+              <!-- Row 3 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    for="tour-title"
+                    >Tour Title:</label
+                  >
+                  <input
+                    type="text"
+                    id="tour-title"
+                    name="tour-title"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                <div></div>
+              </div>
+              <!-- Row 4 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    for="description"
+                    >Tour Description:</label
+                  >
+                  <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                <div></div>
+              </div>
+              <!-- Row 5 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    for="duration"
+                    >Duration of Tour:</label
+                  >
+                  <input
+                    type="text"
+                    name="duration"
+                    id="duration"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                  />
+                </div>
+                <div></div>
+              </div>
+              <!-- Row 6 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    for="price"
+                    >Price:</label
+                  >
+                  <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                <div></div>
+              </div>
+              <!-- Row 7 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    for="contact-phone"
+                    >Age Range:</label
+                  >
+                  <input
+                    type="number"
+                    id="min_age"
+                    name="min_age"
+                    placeholder="Min Age"
+                    class="w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                    required
+                  />
+                  <input
+                    type="number"
+                    id="max_age"
+                    name="max_age"
+                    placeholder="Max Age"
+                    class="w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                <div></div>
+              </div>
+              <!-- Row 8 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div class="space-y-2">
+                  <label class="text-sm text-gray-600">Available Days</label>
+                  <div class="flex flex-wrap gap-2">
+                    <label class="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="days"
+                        value="Mon"
+                        class="mr-1"
+                      />
+                      Monday
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="days"
+                        value="Tue"
+                        class="mr-1"
+                      />
+                      Tuesday
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="days"
+                        value="Wed"
+                        class="mr-1"
+                      />
+                      Wednesday
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="days"
+                        value="Thu"
+                        class="mr-1"
+                      />
+                      Thursday
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="days"
+                        value="Fri"
+                        class="mr-1"
+                      />
+                      Friday
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="days"
+                        value="Sat"
+                        class="mr-1"
+                      />
+                      Saturday
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="days"
+                        value="Sun"
+                        class="mr-1"
+                      />
+                      Sunday
+                    </label>
+                  </div>
+                </div>
+                <div></div>
+              </div>
+              <!-- Row 9 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="text-sm text-gray-600">Images (Max 4)</label>
+                  <input
+                    type="file"
+                    id="uploaded_images"
+                    name="uploaded_images"
+                    class="w-full p-2 border rounded mt-1"
+                    multiple
+                    accept="image/*"
+                    required
+                  />
+                  <div
+                    id="imagePreview"
+                    class="grid grid-cols-4 gap-2 mt-2 h-20"
+                  ></div>
+                </div>
+                <div></div>
+              </div>
+
+              <div class="text-left mt-6">
+                <button
+                  type="button"
+                  onclick="showPreview()"
+                  class="bg-blue-600 text-white py-3 px-8 rounded hover:bg-blue-700"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview Page -->
+    <div id="previewPage" class="mx-auto container p-6 hidden">
+      <div
+        class="backdrop-blur-lg bg-white/60 shadow-xl rounded-lg w-full bg-cover p-6"
+      >
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="text-2xl font-semibold">Preview Details</h1>
+          <button onclick="goBack()" class="text-blue-600 hover:underline">
+            ← Back to Edit
+          </button>
+        </div>
+
+        <div id="previewContent" class="space-y-4"></div>
+
+        <button
+          onclick="submitForm()"
+          class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 mt-6"
+        >
+          Upload
+        </button>
+      </div>
+    </div>
+
+    <!-- ------------------ -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-bold text-xl mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#"
+                id="link-signin"
+                class="hover:text-indigo-400 transition-colors"
+                >Suppliers Sign-in</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                id="link-signup"
+                class="hover:text-indigo-400 transition-colors"
+                >Suppliers' Sign-up</a
+              >
+            </li>
+            <li>
+              <a
+                href="./contact.html"
+                class="hover:text-indigo-400 transition-colors"
+                >Contact Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.allicomtravels.com/"
+                class="hover:text-indigo-400 transition-colors"
+                >Business to General Public</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="md:ms-auto">
+          <h3 class="font-bold text-xl mb-4">Get in Touch</h3>
+          <ul class="space-y-2">
+            <li>📞 08067663986, 08071729330</li>
+            <li>✉️ hello@allicomtravels.com</li>
+            <li>🏢 61 Okesuna Street, Lagos Island, 102273, Lagos, Nigeria.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 mt-8 text-center text-gray-400 text-sm border-t border-gray-700 pt-6"
+      >
+        © 2025 Allicom Tourism | All Rights Reserved
+      </div>
+    </footer>
+
+    <script src="./Assets/Js/upload.js"></script>
+  </body>
+</html>
