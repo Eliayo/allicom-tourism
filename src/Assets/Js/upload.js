@@ -186,32 +186,35 @@ function showForm(formId) {
 // File validation and preview
 document
   .getElementById("uploaded_images")
-  .addEventListener("change", function (e) {
-    const files = e.target.files;
+  .addEventListener("change", function () {
     const imagePreview = document.getElementById("imagePreview");
-    imagePreview.innerHTML = "";
+    imagePreview.innerHTML = ""; // Clear previous previews
 
+    const files = this.files;
     if (files.length > 4) {
-      alert("Please select a maximum of 4 images");
-      e.target.value = "";
+      alert("You can only upload a maximum of 4 images.");
+      this.value = ""; // Reset input
       return;
     }
 
-    for (let file of files) {
-      if (!file.type.startsWith("image/")) {
-        alert("Please select only image files");
-        e.target.value = "";
-        return;
+    Array.from(files).forEach((file) => {
+      if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = document.createElement("img");
+          img.src = e.target.result;
+          img.classList.add(
+            "w-24",
+            "h-24",
+            "rounded",
+            "object-cover",
+            "cursor-pointer"
+          );
+          imagePreview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
       }
-
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const div = document.createElement("div");
-        div.innerHTML = `<img src="${e.target.result}" class="w-full h-16 object-cover rounded" />`;
-        imagePreview.appendChild(div);
-      };
-      reader.readAsDataURL(file);
-    }
+    });
   });
 
 function showPreview() {
@@ -293,11 +296,23 @@ function showPreview() {
         "items-center",
         "justify-center"
       );
-      overlay.innerHTML = `<img src="${img.src}" alt="Enlarged Image" class="max-w-screen-lg max-h-screen-lg">`;
 
-      // Add close button
+      // Create zoomed-in image
+      const zoomedImage = document.createElement("img");
+      zoomedImage.src = img.src;
+      zoomedImage.alt = "Enlarged Image";
+      zoomedImage.classList.add(
+        "max-w-screen-md",
+        "max-h-screen-md",
+        "transform",
+        "scale-150", // Increase size
+        "transition",
+        "duration-300"
+      );
+
+      // Close button
       const closeButton = document.createElement("button");
-      closeButton.innerHTML = "&times;"; // Or an SVG close icon
+      closeButton.innerHTML = "&times;";
       closeButton.classList.add(
         "absolute",
         "top-4",
@@ -306,11 +321,10 @@ function showPreview() {
         "text-4xl",
         "cursor-pointer"
       );
-      closeButton.addEventListener("click", () => {
-        overlay.remove();
-      });
-      overlay.appendChild(closeButton);
+      closeButton.addEventListener("click", () => overlay.remove());
 
+      overlay.appendChild(zoomedImage);
+      overlay.appendChild(closeButton);
       document.body.appendChild(overlay);
     });
   });
