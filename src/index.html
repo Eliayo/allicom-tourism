@@ -5,29 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Supplier Sign-Up and Sign-In Pages - Fully responsive and optimized for aesthetics and usability"
+      content="Explore the best travel destinations with Allicom Travels. We provide visa assistance, study abroad programs, and exclusive deals for your next adventure."
     />
     <meta
       name="keywords"
-      content="Sign Up, Sign In, Supplier, Responsive Design"
+      content="travel, visa assistance, study abroad, Allicom Travels, vacation deals"
     />
-    <meta name="author" content="Your Name" />
-    <title>Supplier Sign-Up & Sign-In</title>
+    <meta name="robots" content="index, follow" />
+    <link href="./output.css" rel="stylesheet" />
     <link
       rel="shortcut icon"
       href="./Assets/Images/favicon.ico.jpg"
       type="image/x-icon"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link href="./output.css" rel="stylesheet" />
-  </head>
+    <title>Allicom Travels - Explore Your Dream Destinations</title>
+    <style>
+      /* Styles for the Hero Section Slider */
+      #hero {
+        transition: background-image 3s ease-in-out;
+      }
 
-  <body class="font-pop bg-gray-200">
+      /* Hamburger Icon */
+      .hamburger {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-pop">
     <!-- Header Section -->
     <header class="bg-black text-white text-sm py-2">
       <div class="container mx-auto flex justify-between items-center px-4">
@@ -117,7 +138,7 @@
             class="h-10 w-auto"
           />
           <a href="#" class="text-2xl font-bold text-indigo-600"
-            >Allicom Tourism</a
+            >Allicom Travels</a
           >
         </div>
 
@@ -147,18 +168,17 @@
           class="hidden lg:flex space-x-6 text-gray-700 font-medium"
           id="desktop-menu"
         >
-          <li><a href="./tour.html" class="hover:text-blue-500">Home</a></li>
+          <li><a href="./index.html" class="hover:text-blue-500">Home</a></li>
+          <li><a href="#" class="hover:text-blue-500">Visa Assistance</a></li>
+          <li><a href="#" class="hover:text-blue-500">Study Abroad</a></li>
           <li>
             <a href="./services.html" class="hover:text-blue-500">Services</a>
           </li>
           <li>
-            <a href="./contact.html" class="hover:text-blue-500">Contact</a>
+            <a href="./contact.html" class="hover:text-blue-500">Contact Us</a>
           </li>
           <li>
-            <a href="#" id="nav-signup" class="hover:text-blue-500">Sign up</a>
-          </li>
-          <li>
-            <a href="#" id="nav-signin" class="hover:text-blue-500">Sign in</a>
+            <a href="./signin.html" class="hover:text-blue-500">Sign In</a>
           </li>
         </ul>
       </div>
@@ -168,8 +188,14 @@
         id="mobile-menu"
         class="lg:hidden hidden flex flex-col bg-gray-300 space-y-2 px-4 py-4"
       >
-        <a href="./tour.html" class="block text-gray-700 hover:text-blue-500"
+        <a href="./index.html" class="block text-gray-700 hover:text-blue-500"
           >Home</a
+        >
+        <a href="#" class="block text-gray-700 hover:text-blue-500"
+          >Visa Assistance</a
+        >
+        <a href="#" class="block text-gray-700 hover:text-blue-500"
+          >Study Abroad</a
         >
         <a
           href="./services.html"
@@ -177,519 +203,792 @@
           >Services</a
         >
         <a href="./contact.html" class="block text-gray-700 hover:text-blue-500"
-          >Contact</a
+          >Contact Us</a
         >
-        <a
-          href="#"
-          id="mobile-signup"
-          class="block text-gray-700 hover:text-blue-500"
-          >Sign up</a
-        >
-        <a
-          href="#"
-          id="mobile-signin"
-          class="block text-gray-700 hover:text-blue-500"
-          >Sign in</a
+        <a href="./signin.html" class="block text-gray-700 hover:text-blue-500"
+          >Sign In</a
         >
       </div>
     </nav>
 
-    <!-- Main section -->
-
-    <div class="container px-4 mx-auto my-12">
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="relative bg-cover bg-center h-[500px]"
+      data-background='[
+      "./Assets/Images/pexels-vincent-gerbouin-445991-1167021.jpg",
+      "./Assets/Images/pexels-asadphoto-1450363.jpg",
+      "./Assets/Images/pexels-maria-salazar-303506-879010.jpg",
+      "./Assets/Images/pexels-pixabay-38238.jpg",
+      "./Assets/Images/pexels-pixabay-261204.jpg",
+      "./Assets/Images/pexels-recalmedia-60217.jpg",
+      "./Assets/Images/pexels-gapeppy1-2373201.jpg"
+    ]'
+    >
       <div
-        class="text-center container mx-auto bg-white rounded-xl shadow-lg p-8 space-y-6 hidden"
-        id="signup-details"
+        class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white px-4"
       >
-        <h1 class="text-4xl font-bold text-indigo-800 mb-4">
-          Tourism Products and Services
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Explore the city of your choice
         </h1>
-        <h5 class="text-xl text-gray-600 mb-4">
-          Welcome to Allicom tourism, the largest African tourism platform for
-          suppliers to integrate their products and services.
-        </h5>
-        <div class="space-y-4 text-gray-700">
-          <p class="text-base leading-relaxed">
-            As a tour operator, car hire company, or hotel property owner with a
-            large inventory, it is not always easy to source potential customers
-            and increase sales. At Allicom Tourism, we can help you tap into a
-            new audience and establish a solid agent-customer base, whether you
-            supply sightseeing tours, transfers, or hotels/restaurants. We'll
-            enable you to expand your business by reaching out to travel agents
-            and the general public, increasing your visibility to thousands of
-            agents internationally.
-          </p>
-          <p class="text-base leading-relaxed">
-            Register with us today to reach potential customers for your
-            business.
-          </p>
-        </div>
-        <div class="pt-6">
-          <button
-            onclick="toggleForm()"
-            class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-md"
+        <div
+          class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-4"
+        >
+          <select
+            id="destination"
+            class="p-2 rounded bg-white text-gray-700 focus:outline-none w-96"
           >
-            Sign Up
-          </button>
+            <option value="">Select Destination</option>
+            <option value="Lagos,Nigeria">Lagos, Nigeria</option>
+            <option value="Abuja,Nigeria">Abuja, Nigeria</option>
+            <option value="Calabar,Nigeria">Calabar, Nigeria</option>
+            <option value="Uyo,Nigeria">Uyo, Nigeria</option>
+            <option value="Ibadan,Nigeria">Ibadan, Nigeria</option>
+            <option value="Osun,Nigeria">Osun, Nigeria</option>
+            <option value="Ogun,Nigeria">Ogun, Nigeria</option>
+            <option value="Kwara,Nigeria">Kwara, Nigeria</option>
+            <option value="Kano,Nigeria">Kano, Nigeria</option>
+            <option value="Plateau,Nigeria">Plateau, Nigeria</option>
+            <option value="Cape Verde">Cape Verde</option>
+            <option value="Dubai,UAE">Dubai, UAE</option>
+            <option value="Abu Dhabi,UAE">Abu Dhabi, UAE</option>
+            <option value="Maldives">Maldives</option>
+            <option value="Mauritius">Mauritius</option>
+            <option value="Morocco">Morocco</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Mauritius">Mauritius</option>
+            <option value="Seychelles">Seychelles</option>
+            <option value="Nairobi, Kenya">Nairobi, Kenya</option>
+          </select>
+          <input
+            id="date"
+            type="date"
+            class="p-2 rounded bg-white text-gray-700 focus:outline-none w-96"
+          />
         </div>
+        <button
+          id="searchButton"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+        >
+          Search
+        </button>
       </div>
 
+      <!-- Container for cards -->
       <div
-        id="registration-form"
-        class="hidden mt-8 mx-auto container border border-gray-200 p-6 bg-white rounded-xl shadow-md"
-      >
-        <h2 class="text-2xl font-semibold mb-6 text-gray-800 text-center">
-          Supplier Registration Form
-        </h2>
-        <form id="signup-form" action="/auth/signup-b2b/" method="POST">
-          <div class="space-y-6">
-            <!-- First Row -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="trading-name"
-                  >Trading Name:</label
-                >
-                <input
-                  type="text"
-                  id="trading-name"
-                  name="trading-name"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="company-name"
-                  >Company Name:</label
-                >
-                <input
-                  type="text"
-                  id="company-name"
-                  name="company-name"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
+        id="tourism-cards"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4"
+      ></div>
 
-            <!-- Row 2 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="registration-number"
-                  >Registration Number:</label
-                >
-                <input
-                  type="text"
-                  id="registration-number"
-                  name="registration-number"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="business-address"
-                  >Business Address:</label
-                >
-                <input
-                  type="text"
-                  id="business-address"
-                  name="business-address"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
-            <!-- Row 3 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="business-phone"
-                  >Business Phone Number:</label
-                >
-                <input
-                  type="number"
-                  id="business-phone"
-                  name="business-phone"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="business-email"
-                  >Business Email Address:</label
-                >
-                <input
-                  type="email"
-                  id="business-email"
-                  name="business-email"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
-            <!-- Row 4 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="owner-name"
-                  >Business Owner’s Full Name:</label
-                >
-                <input
-                  type="text"
-                  id="owner-name"
-                  name="owner-name"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="owner-phone"
-                  >Business Owner’s Phone Number:</label
-                >
-                <input
-                  type="number"
-                  id="owner-phone"
-                  name="owner-phone"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
-            <!-- Row 5 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="owner-email"
-                  >Business Owner’s Email:</label
-                >
-                <input
-                  type="email"
-                  id="owner-email"
-                  name="owner-email"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="contact-name"
-                  >Contact Person’s Full Name:</label
-                >
-                <input
-                  type="text"
-                  id="contact-name"
-                  name="contact-name"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
-            <!-- Row 6 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="contact-phone"
-                  >Contact Person’s Phone Number:</label
-                >
-                <input
-                  type="number"
-                  id="contact-phone"
-                  name="contact-phone"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="contact-email"
-                  >Contact Person’s Email:</label
-                >
-                <input
-                  type="email"
-                  id="contact-email"
-                  name="contact-email"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
-            <!-- Row 7 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="business-certificate"
-                  >Business Certificate:</label
-                >
-                <input
-                  type="file"
-                  id="business-certificate"
-                  name="business-certificate"
-                  accept=".jpg,.jpeg,.png,.pdf"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="membership-certificate"
-                  >Association Membership Certificate:</label
-                >
-                <input
-                  type="file"
-                  id="membership-certificate"
-                  name="membership-certificate"
-                  accept=".jpg,.jpeg,.png,.pdf"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
-            <!-- Row 8 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="username"
-                  >Username:</label
-                >
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="password"
-                  >Password:</label
-                >
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  minlength="8"
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                  required
-                  autocomplete="off"
-                />
+      <!-- Pagination -->
+      <div id="pagination" class="flex justify-center space-x-2 my-4"></div>
+    </section>
 
+    <!-- Tour Services Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto text-center px-4">
+        <h2 class="text-3xl font-bold mb-4">Tour Services</h2>
+        <p class="text-gray-700 max-w-4xl mx-auto">
+          We are passionate about travel. Every day we inspire and reach many
+          travelers for honeymoon, leisure, vacation, group tour and hangout. We
+          designs ready-made packages and tailor-made package on request that
+          will exceed your expectations. Our deals help customers save money and
+          time, so they can focus on having fun.
+        </p>
+      </div>
+    </section>
+
+    <!-- Best Deals Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <!-- Section Title -->
+        <div class="text-center mb-12">
+          <h2 class="text-lg font-bold text-green-500 italic mb-2">
+            All we have to make your travel to be Best
+          </h2>
+          <h2 class="text-3xl font-bold">Best Deals</h2>
+        </div>
+
+        <div class="flex flex-wrap -mx-4">
+          <!-- Main Content (Cards) -->
+          <div class="w-full lg:w-2/12 px-4"></div>
+          <div class="w-full lg:w-8/12 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Vacation Card Component -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Mauritius Island
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-michalmarek-3703465.jpg"
+                  alt="Mauritius Island"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN500,000</span><br />
+                  Couple <span class="font-bold">NGN650,000</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>- Return airport pick-up.</li>
+                  <li>- 3 days in standard hotel.</li>
+                  <li>- Daily breakfast.</li>
+                  <li>- Lagos Island Tour.</li>
+                  <li>- Lekki Tour.</li>
+                </ul>
                 <button
-                  type="button"
-                  id="toggle-password"
-                  class="text-sm text-blue-500 hover:underline mt-1"
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
                 >
-                  Show
+                  Book Now
+                </button>
+              </div>
+
+              <!-- Repeatable Card for Seychelles -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Vacation in Seychelles
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-bouyonalmighty-2956470.jpg"
+                  alt="Seychelles"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN1,199,999</span
+                  ><br />
+                  2 Persons <span class="font-bold">NGN1,349,999</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>- Tourist entry permit.</li>
+                  <li>- Return airport pick-up.</li>
+                  <li>- 6 nights 7 days in beach resort.</li>
+                  <li>- Daily breakfast.</li>
+                  <li>- Not include flight, start from NGN1.5m.</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
+                </button>
+              </div>
+
+              <!-- Repeatable Card for Maldives -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Romantic Maldives
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-asadphoto-3601425.jpg"
+                  alt="Maldives"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN1,500,000</span
+                  ><br />
+                  Couple <span class="font-bold">NGN2,299,999</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>- Tourist entry permit.</li>
+                  <li>- Return airport pick-up.</li>
+                  <li>- 6 nights 7 days in beach resort.</li>
+                  <li>- Daily breakfast.</li>
+                  <li>- Not include flight, start from NGN2.5m.</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
                 </button>
               </div>
             </div>
-            <!-- Row 9 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-2"
-                  for="confirm-password"
-                  >Confirm Password:</label
-                >
-                <input
-                  type="password"
-                  id="confirm-password"
-                  name="confirm-password"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
-                  autocomplete="off"
+          </div>
+          <!-- Sidebar -->
+          <aside class="w-full lg:w-2/12 px-4 my-8 lg:my-0">
+            <div class="bg-purple-200 rounded-lg shadow-lg">
+              <!-- Image Slider -->
+              <div class="relative">
+                <img
+                  src="./Assets/Images/pexels-asadphoto-1450354.jpg"
+                  alt="Hotel view 1"
+                  class="w-full h-60 object-cover rounded-lg"
+                />
+                <img
+                  src="./Assets/Images/pexels-asadphoto-3601421.jpg"
+                  alt="Hotel view 2"
+                  class="w-full h-60 object-cover rounded-lg hidden"
+                />
+                <img
+                  src="./Assets/Images/pexels-apasaric-2044434.jpg"
+                  alt="Hotel view 2"
+                  class="w-full h-60 object-cover rounded-lg hidden"
+                />
+                <img
+                  src="./Assets/Images/pexels-apasaric-325193.jpg"
+                  alt="Hotel view 2"
+                  class="w-full h-60 object-cover rounded-lg hidden"
+                />
+                <img
+                  src="./Assets/Images/pexels-asadphoto-3601425.jpg"
+                  alt="Hotel view 2"
+                  class="w-full h-60 object-cover rounded-lg hidden"
+                />
+                <img
+                  src="./Assets/Images/pexels-bouyonalmighty-2956470.jpg"
+                  alt="Hotel view 2"
+                  class="w-full h-60 object-cover rounded-lg hidden"
+                />
+                <img
+                  src="./Assets/Images/pexels-michalmarek-3703465.jpg"
+                  alt="Hotel view 2"
+                  class="w-full h-60 object-cover rounded-lg hidden"
                 />
               </div>
-              <ul class="text-gray-700 text-sm list-disc px-6 md:flex gap-9">
-                <li>Uppercase letter</li>
-                <li>Lowercase letter</li>
-                <li>Number</li>
-                <li>At least 8 characters long</li>
-              </ul>
             </div>
-            <!-- Error Message -->
-            <p id="password-match-error" class="text-red-500 text-sm hidden">
-              Passwords do not match.
-            </p>
+          </aside>
+          <!--  -->
+          <div class="w-full lg:w-2/12 px-4"></div>
+          <div class="w-full lg:w-8/12 px-4 mt-7">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Vacation Card Component -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Vacation in Mombasa
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-royal-wave-ent-781256594-20693411.jpg"
+                  alt="Mombasa"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN1,490,000</span
+                  ><br />
+                  2 Adults <span class="font-bold">NGN1,800,000</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>- Entry tourist visa.</li>
+                  <li>- Return airport pick-up.</li>
+                  <li>- 7 Days accommodation at a resort.</li>
+                  <li>- Daily breakfast.</li>
+                  <li>- Mombasa city tour.</li>
+                  <li>- Not include flight, start from NGN1.5m</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
+                </button>
+              </div>
 
-            <div class="text-right mt-6">
-              <button
-                type="submit"
-                id="signup-button"
-                class="bg-green-500 text-white px-8 py-3 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors"
-                disabled
-              >
-                Submit
-              </button>
+              <!-- Repeatable Card for Seychelles -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Vacation in Zanzibar
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-keeganjchecks-30165022.jpg"
+                  alt="Zanzibar"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN1,520,000</span
+                  ><br />
+                  2 Adults <span class="font-bold">NGN1,995,000</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>- Entry tourist visa.</li>
+                  <li>- Return airport pick-up.</li>
+                  <li>- 7 days accommodation at a beach hotel.</li>
+                  <li>- Daily breakfast.</li>
+                  <li>- City and shopping tour.</li>
+                  <li>- Not include flight, start from NGN1.5m.</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
+                </button>
+              </div>
+
+              <!-- Repeatable Card for Mauritius -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Best of Mauritius
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-asadphoto-9656583.jpg"
+                  alt="Mauritius"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN1,499,999</span
+                  ><br />
+                  Couple <span class="font-bold">NGN2,600,000</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>- Tourist entry permit.</li>
+                  <li>- Return airport pick-up.</li>
+                  <li>- 7 days in 3 stars hotel.</li>
+                  <li>- Daily breakfast.</li>
+                  <li>- North Island Tour</li>
+                  <li>- South Island Tour.</li>
+                  <li>- Not include flight, start from NGN1.8m.</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
+                </button>
+              </div>
             </div>
           </div>
-        </form>
-      </div>
-    </div>
+          <div class="w-full lg:w-2/12 px-4"></div>
+          <!--  -->
+          <div class="w-full lg:w-2/12 px-4"></div>
+          <div class="w-full lg:w-8/12 px-4 my-7">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Vacation Card Component -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Best of Singapore City
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-kin-pastor-251088-777059.jpg"
+                  alt="Singapore City"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN1,600,000</span
+                  ><br />
+                  P. Sharing <span class="font-bold">NGN1,449,999</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>- Return airport pick-up.</li>
+                  <li>- 5 nights in 3 stars hotel.</li>
+                  <li>- Daily breakfast.</li>
+                  <li>- Singapore city tour.</li>
+                  <li>- Santosa Island tour.</li>
+                  <li>- And entertainment etc.</li>
+                  <li>- Not include flight, start from NGN2.8m</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
+                </button>
+              </div>
 
-    <!-- ------------sign in--------------------- -->
+              <!-- Repeatable Card for Vienna -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Vienna, Austria City Break
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-pixabay-161074.jpg"
+                  alt="Vienna"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN0.00</span><br />
+                  P. Sharing <span class="font-bold">NGN0.00</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>Coming soon!</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
+                </button>
+              </div>
 
-    <!-- Sign-In Section -->
-    <div class="container mx-auto px-4 pb-12" id="signin-form-container">
-      <div class="text-center container mx-auto p-8 mb-6 mt-0">
-        <h1 class="text-4xl font-bold text-indigo-800 mb-4">
-          Allicom Tourism for Suppliers
-        </h1>
-
-        <div class="space-y-4 text-gray-700">
-          <p class="text-base leading-relaxed">
-            Welcome to Allicom tourism, the largest Africa tourism platform for
-            suppliers to place/integrate their products and services.
-          </p>
+              <!-- Repeatable Card for Minsk -->
+              <div class="bg-blue-100 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-center text-blue-900">
+                  Minsk, Belarus City Break
+                </h3>
+                <img
+                  src="./Assets/Images/pexels-nickkwanhk-2614818.jpg"
+                  alt="Minsk"
+                  class="w-full h-40 object-cover rounded-lg mt-4"
+                />
+                <p class="text-blue-700 mt-4 font-medium">
+                  Solo traveler <span class="font-bold">NGN0.00</span><br />
+                  P. Sharing <span class="font-bold">NGN0.00</span>
+                </p>
+                <ul class="text-blue-600 text-sm mt-2 space-y-1">
+                  <li>Coming soon!</li>
+                </ul>
+                <button
+                  class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-2/12 px-4"></div>
         </div>
       </div>
+    </section>
 
-      <div class="max-w-lg mx-auto bg-white p-6 rounded-xl shadow-lg">
-        <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">
-          Sign In
-        </h2>
-        <form
-          id="signin-form"
-          action="/auth/login-b2b/"
-          method="POST"
-          class="space-y-6"
-        >
-          <div>
-            <label
-              for="signin-email"
-              class="block text-sm font-medium text-gray-700"
-              >Email:</label
-            >
+    <!-- -------------------------------- -->
+
+    <!-- -------------------------------------- -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-100 py-12 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="text-lg font-bold text-green-500 mb-2 italic">
+          We reach you easily no matter where you are in the World
+        </p>
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">Get In Touch</h2>
+
+        <!-- Contact Info & Form -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Contact Information (Address and Map) -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-semibold text-blue-800 mb-4">
+              Get In Touch
+            </h3>
+
+            <!-- Address Information -->
+            <div class="space-y-4 mb-8">
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 text-sky-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"
+                  />
+                </svg>
+
+                <p class="ml-3 text-blue-700">
+                  61 Okesuna Street, Lagos Island, 102273, Lagos, Nigeria.
+                </p>
+              </div>
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
+                  />
+                </svg>
+
+                <p class="ml-3 text-blue-700">
+                  190 Broad Street, Lagos Island, 102273, Lagos, Nigeria.
+                </p>
+              </div>
+
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                  />
+                </svg>
+
+                <p class="ml-3 text-blue-700">08067663986, 08071729330</p>
+              </div>
+
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                  />
+                </svg>
+
+                <p class="ml-3 text-blue-700">hello@allicomtravels.com</p>
+              </div>
+            </div>
+
+            <!-- Google Map -->
+            <h3 class="text-2xl font-semibold text-blue-800 mb-4">
+              Our Location
+            </h3>
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15858.206379204817!2d3.404914!3d6.451564!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b3b651b453b%3A0x12bd56715c8c7306!2s61%20Okesuna%20St%2C%20off%20Pike%20Street%2C%20Lagos%20Island%2C%20Lagos%20102273%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1736037484526!5m2!1sen!2sus"
+              class="w-full h-80 rounded-lg"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-semibold text-blue-800 mb-4">
+              Chat with us
+            </h3>
+            <form action="#" method="POST" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- First Name -->
+                <div class="flex flex-col">
+                  <label for="first-name" class="text-blue-700"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="first-name"
+                    class="mt-2 px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <!-- Last Name -->
+                <div class="flex flex-col">
+                  <label for="last-name" class="text-blue-700">Last Name</label>
+                  <input
+                    type="text"
+                    id="last-name"
+                    name="last-name"
+                    class="mt-2 px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex flex-col">
+                <label for="email" class="text-blue-700">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="mt-2 px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+
+              <!-- Phone Number -->
+              <div class="flex flex-col">
+                <label for="phone" class="text-blue-700">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="mt-2 px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+
+              <!-- Option Field -->
+              <div class="flex flex-col">
+                <label for="option" class="text-blue-700">Select Option</label>
+                <select
+                  id="option"
+                  name="option"
+                  class="mt-2 px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                >
+                  <option value="" disabled>Select an option</option>
+                  <option value="service1">Dubai Visa (UAE Visa)</option>
+                  <option value="service2">Flight Ticket</option>
+                  <option value="service3">Hotel Booking</option>
+                  <option value="service4">Tour Package</option>
+                  <option value="service5">Visa Assitance</option>
+                  <option value="service6">Travel Guide</option>
+                  <option value="service7">Car Hire</option>
+                  <option value="service8">Study Abroad</option>
+                  <option value="service9">Immigration Service</option>
+                  <option value="service0">Insurance Service</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div class="flex flex-col">
+                <label for="message" class="text-blue-700">Your Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  class="mt-2 px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="mt-4 text-center">
+                <button
+                  type="submit"
+                  class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 lg:gap-28"
+      >
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="hover:text-indigo-400">Travel Updates</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400">Visa Assitance</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400">Tours Packages</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400">Study Abroad</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400">Insurance Services</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400">About Us</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Subscription -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">
+            Subscribe to Our Newsletter
+          </h3>
+          <p class="mb-4">Stay updated with our latest news and offers.</p>
+          <form action="#" method="POST">
             <input
               type="email"
-              id="signin-email"
-              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               placeholder="Enter your email"
-              required
+              class="px-4 py-2 w-full rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
-          </div>
-          <div>
-            <label
-              for="signin-password"
-              class="block text-sm font-medium text-gray-700"
-              >Password:</label
+            <button
+              type="submit"
+              class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
             >
-            <input
-              type="password"
-              id="signin-password"
-              placeholder="Enter your password"
-              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-              minlength="8"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              required
-              autocomplete="off"
-            />
-          </div>
-          <ul class="text-gray-700 text-sm list-disc px-6">
-            <li>Uppercase letter</li>
-            <li>Lowercase letter</li>
-            <li>Number</li>
-            <li>At least 8 characters long</li>
-          </ul>
-          <div class="flex justify-between items-center">
-            <label class="flex items-center space-x-2">
-              <input type="checkbox" class="text-indigo-600" />
-              <span class="text-gray-700">Remember Me</span>
-            </label>
-          </div>
-          <button
-            type="submit"
-            class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            Sign In
-          </button>
-        </form>
-        <p class="text-sm text-center text-gray-600 mt-4">
-          Don't have an account?
-          <a id="go-to-signup" href="#" class="text-indigo-600 hover:underline"
-            >Sign Up</a
-          >
-        </p>
-      </div>
-    </div>
-    <!-- ---------------------------- -->
+              Subscribe
+            </button>
+          </form>
+        </div>
 
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8">
+        <!-- Social Media Icons -->
+        <div class="flex flex-col items-start">
+          <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+          <div class="flex space-x-6">
+            <a
+              href="https://web.facebook.com/allicomtravels"
+              class="text-white hover:text-indigo-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                viewBox="0 0 24 24"
+                fill="white"
+              >
+                <path
+                  d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/allicomtravels"
+              class="text-white hover:text-indigo-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="h-6 w-6"
+                fill="white"
+              >
+                <path
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://x.com/allicomtravels"
+              class="text-white hover:text-indigo-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                fill="white"
+                class="h-6 w-6"
+              >
+                <path
+                  d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/allicom-travels/posts/?feedView=all"
+              class="text-white hover:text-indigo-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                fill="white"
+                class="h-6 w-6"
+              >
+                <path
+                  d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Address -->
         <div>
-          <h3 class="font-bold text-xl mb-4">Quick Links</h3>
-          <ul class="space-y-2">
-            <li>
-              <a
-                href="#"
-                id="link-signin"
-                class="hover:text-indigo-400 transition-colors"
-                >Suppliers Sign-in</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                id="link-signup"
-                class="hover:text-indigo-400 transition-colors"
-                >Suppliers' Sign-up</a
-              >
-            </li>
-            <li>
-              <a
-                href="./contact.html"
-                class="hover:text-indigo-400 transition-colors"
-                >Contact Us</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.allicomtravels.com/"
-                class="hover:text-indigo-400 transition-colors"
-                >Business to General Public</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="md:ms-auto">
-          <h3 class="font-bold text-xl mb-4">Get in Touch</h3>
-          <ul class="space-y-2">
-            <li>📞 08067663986, 08071729330</li>
-            <li>✉️ hello@allicomtravels.com</li>
-            <li>🏢 61 Okesuna Street, Lagos Island, 102273, Lagos, Nigeria.</li>
-          </ul>
+          <h3 class="text-lg font-semibold mb-4">Our Address</h3>
+          <p>61 Okesuna Street, Lagos Island, 102273, Lagos, Nigeria</p>
+          <br />
+          <p>Email: hello@allicomtravels.com</p>
+          <br />
+          <p>Phone: 08067663986, 08071729330</p>
         </div>
       </div>
 
-      <div
-        class="container mx-auto px-4 mt-8 text-center text-gray-400 text-sm border-t border-gray-700 pt-6"
-      >
-        © 2025 Allicom Tourism | All Rights Reserved
+      <div class="text-center mt-12 border-t pt-6">
+        <p class="text-sm text-gray-400">
+          &copy; 2025 Allicom Travels. All rights reserved.
+        </p>
       </div>
     </footer>
 
-    <script src="./Assets/Js/signin.js"></script>
+    <script src="./Assets/Js/script.js"></script>
   </body>
 </html>

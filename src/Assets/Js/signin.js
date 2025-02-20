@@ -11,11 +11,6 @@ function toggleForm() {
   form.classList.toggle("hidden");
 }
 
-function toggleForm() {
-  const form = document.getElementById("registration-form");
-  form.classList.toggle("hidden");
-}
-
 // Password visibility toggle
 document.getElementById("toggle-password").addEventListener("click", () => {
   const passwordField = document.getElementById("password");
@@ -50,20 +45,20 @@ passwordField.addEventListener("input", validatePasswords);
 confirmPasswordField.addEventListener("input", validatePasswords);
 
 // Handle sign-in form submission
-document.getElementById("signin-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+// document.getElementById("signin-form").addEventListener("submit", function (e) {
+//   e.preventDefault();
 
-  const email = document.getElementById("signin-email").value;
-  const password = document.getElementById("signin-password").value;
+//   const email = document.getElementById("signin-email").value;
+//   const password = document.getElementById("signin-password").value;
 
-  if (email === "" || password === "") {
-    alert("Please fill in all fields."); // Example validation
-    return; // Stop further execution
-  }
+//   if (email === "" || password === "") {
+//     alert("Please fill in all fields."); // Example validation
+// return; // Stop further execution
+// }
 
-  // If validation passes, redirect:
-  window.location.href = "./upload.html";
-});
+// If validation passes, redirect:
+//   window.location.href = "./upload.html";
+// });
 
 // Handle sign-up form submission
 document.getElementById("signup-form").addEventListener("submit", (e) => {
@@ -243,74 +238,132 @@ class AuthFormHandler {
   }
 
   async handleLogin(e) {
-    e.preventDefault();
+    e.preventDefault(); // ✅ Prevent form from refreshing
 
-    const email = document.getElementById("signin-email").value;
-    const password = document.getElementById("signin-password").value;
+    const email = document.getElementById("signin-email").value.trim();
+    const password = document.getElementById("signin-password").value.trim();
+
+    // ✅ Basic validation
+    if (!email || !password) {
+      this.showMessage("Please fill in all fields.", true, "signin");
+      return;
+    }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/login-b2b/`, {
+      const response = await fetch(`${API_BASE_URL}auth/login-supplier/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password }), // ✅ Send login details as JSON
       });
+
+      if (!response.ok) {
+        throw new Error("Invalid email or password");
+      }
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
+      if (!data.token) {
+        throw new Error("Login failed: No token returned from API");
       }
 
-      localStorage.setItem(TOKEN_KEY, data.token);
-      this.showMessage("Login successful!", false);
-      window.location.href = "/dashboard"; // Redirect after successful login
+      // ✅ Store authentication token
+      localStorage.setItem("authToken", data.token);
+
+      this.showMessage("Login successful! Redirecting...", false, "signin");
+
+      setTimeout(() => {
+        window.location.href = "upload.html"; // ✅ Redirect to upload page
+      }, 2000);
     } catch (error) {
-      this.showMessage(error.message, true);
+      this.showMessage(error.message, true, "signin");
     }
+  }
+
+  // ✅ Helper function to validate email format
+  validateEmail(email) {
+    return /^[\w\.-]+@[\w\.-]+\.\w+$/.test(email);
   }
 
   async handleSignup(e) {
     e.preventDefault();
 
+    const formData = new FormData();
+
+    // ✅ Collect all fields (API confirmed these fields)
+    formData.append("name", document.getElementById("username").value);
+    formData.append("email", document.getElementById("business-email").value);
+    formData.append("password", document.getElementById("password").value);
+
+    // ✅ Business details
+    formData.append(
+      "trading_name",
+      document.getElementById("trading-name").value
+    );
+    formData.append(
+      "company_name",
+      document.getElementById("company-name").value
+    );
+    formData.append(
+      "registration_number",
+      document.getElementById("registration-number").value
+    );
+    formData.append(
+      "business_address",
+      document.getElementById("business-address").value
+    );
+    formData.append(
+      "business_phone_number",
+      document.getElementById("business-phone").value
+    );
+    formData.append(
+      "business_email",
+      document.getElementById("business-email").value
+    );
+
+    // ✅ Business owner details
+    formData.append(
+      "business_owner_full_name",
+      document.getElementById("owner-name").value
+    );
+    formData.append(
+      "business_owner_phone_number",
+      document.getElementById("owner-phone").value
+    );
+    formData.append(
+      "business_owner_email",
+      document.getElementById("owner-email").value
+    );
+
+    // ✅ Contact person details
+    formData.append(
+      "contact_person_full_name",
+      document.getElementById("contact-name").value
+    );
+    formData.append(
+      "contact_person_phone_number",
+      document.getElementById("contact-phone").value
+    );
+    formData.append(
+      "contact_person_email",
+      document.getElementById("contact-email").value
+    );
+
+    // ✅ File Uploads
+    const businessCert = document.getElementById("business-certificate")
+      .files[0];
+    const membershipCert = document.getElementById("membership-certificate")
+      .files[0];
+
+    if (businessCert) formData.append("business_certificate", businessCert);
+    if (membershipCert)
+      formData.append("association_membership_certificate", membershipCert);
+
     try {
-      // Create FormData object for file uploads
-      const formData = new FormData();
-
-      // Add all form fields to FormData
-      const fields = [
-        "trading-name",
-        "company-name",
-        "registration-number",
-        "business-address",
-        "business-phone",
-        "business-email",
-        "owner-name",
-        "owner-phone",
-        "owner-email",
-        "contact-name",
-        "contact-phone",
-        "contact-email",
-        "username",
-        "password",
-      ];
-
-      fields.forEach((field) => {
-        formData.append(field, document.getElementById(field).value);
-      });
-
-      // Add file uploads
-      const businessCert = document.getElementById("business-certificate")
-        .files[0];
-      const membershipCert = document.getElementById("membership-certificate")
-        .files[0];
-      formData.append("business_certificate", businessCert);
-      formData.append("membership_certificate", membershipCert);
-
-      const response = await fetch(`${API_BASE_URL}/auth/signup-b2b/`, {
+      const response = await fetch(`${API_BASE_URL}auth/signup-supplier/`, {
         method: "POST",
-        body: formData,
+        body: formData, // ✅ API requires FormData for file uploads
       });
 
       const data = await response.json();
@@ -319,25 +372,50 @@ class AuthFormHandler {
         throw new Error(data.message || "Signup failed");
       }
 
-      localStorage.setItem(TOKEN_KEY, data.token);
-      this.showMessage("Account created successfully!", false);
-      window.location.href = "/dashboard"; // Redirect after successful signup
+      // ✅ Store authentication token
+      localStorage.setItem("authToken", data.token);
+
+      this.showMessage(
+        "Account created successfully! Redirecting to login...",
+        false
+      );
+
+      setTimeout(() => {
+        window.location.href = "signin.html"; // Redirect to sign-in page
+      }, 2000);
     } catch (error) {
       this.showMessage(error.message, true);
     }
   }
 
-  showMessage(message, isError = false) {
-    const messageDiv = document.createElement("div");
-    messageDiv.textContent = message;
-    messageDiv.className = `p-4 rounded-md mb-4 ${
-      isError ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
-    }`;
+  showMessage(message, isError = false, target = "dynamic") {
+    let messageDiv;
 
-    const form = document.querySelector("form");
-    form.parentNode.insertBefore(messageDiv, form);
+    if (target === "signin") {
+      // ✅ Use existing error message element for Sign-In
+      messageDiv = document.getElementById("signin-error");
+      messageDiv.textContent = message;
+      messageDiv.classList.toggle("hidden", false);
+      messageDiv.classList.toggle(
+        isError ? "text-red-500" : "text-green-500",
+        true
+      );
 
-    setTimeout(() => messageDiv.remove(), 5000);
+      // Hide the message after 5 seconds
+      setTimeout(() => messageDiv.classList.add("hidden"), 5000);
+    } else {
+      // ✅ Create a new message for other forms (e.g., signup)
+      messageDiv = document.createElement("div");
+      messageDiv.textContent = message;
+      messageDiv.className = `p-4 rounded-md mb-4 ${
+        isError ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+      }`;
+
+      const form = document.querySelector("form");
+      form.parentNode.insertBefore(messageDiv, form);
+
+      setTimeout(() => messageDiv.remove(), 5000);
+    }
   }
 }
 

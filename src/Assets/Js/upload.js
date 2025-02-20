@@ -128,40 +128,56 @@ function goBack() {
 
 async function submitForm() {
   const formData = new FormData();
+
   formData.append("city", document.getElementById("city").value);
   formData.append("country", document.getElementById("country").value);
-  formData.append("Tour Title", document.getElementById("tour-title").value);
+  formData.append("tour_title", document.getElementById("tour-title").value);
   formData.append("description", document.getElementById("description").value);
   formData.append("price", document.getElementById("price").value);
-  formData.append("min_age", document.getElementById("min_age").value);
-  formData.append("max_age", document.getElementById("max_age").value);
-  formData.append("duration", document.getElementById("duration").value);
+  formData.append("age_limit", document.getElementById("age_limit").value);
+  formData.append(
+    "duration",
+    parseInt(document.getElementById("duration").value, 10)
+  );
 
   const selectedDays = Array.from(
     document.querySelectorAll('input[name="days"]:checked')
   ).map((checkbox) => checkbox.value);
   formData.append("available_days", JSON.stringify(selectedDays));
 
-  const uploadedImages = document.getElementById("uploaded_images").files;
-  for (let i = 0; i < uploadedImages.length; i++) {
-    formData.append("uploaded_images", uploadedImages[i]);
+  const files = document.getElementById("uploaded_images").files;
+  for (let i = 0; i < files.length; i++) {
+    formData.append("uploaded_images", files[i]);
   }
+
+  const authToken = localStorage.getItem("authToken");
+  if (!authToken) {
+    alert("User is not authenticated. Please log in again.");
+    return;
+  }
+
+  // ✅ Show the loading indicator & disable the button
+  document.getElementById("loadingIndicator").classList.remove("hidden");
+  const uploadButton = document.querySelector("button[onclick='submitForm()']");
+  uploadButton.disabled = true;
+  uploadButton.textContent = "Uploading...";
 
   try {
     const response = await fetch(
-      "https://cors-anywhere.herokuapp.com/https://api.allicomtravels.com/tour/tourism-site/",
+      "https://api.allicomtravels.com/tour/tourism-site/",
       {
         method: "POST",
         headers: {
           Accept: "application/json",
-          Authorization: `Token YOUR_API_TOKEN`,
+          Authorization: `Token ${authToken.replace("Token ", "").trim()}`,
         },
         body: formData,
       }
     );
 
     if (!response.ok) {
-      throw new Error(await response.text());
+      const errorMessage = await response.text();
+      throw new Error(errorMessage);
     }
 
     alert("Tourism site uploaded successfully!");
@@ -169,6 +185,11 @@ async function submitForm() {
   } catch (error) {
     console.error("Error:", error);
     alert("Error uploading site. Please try again.");
+  } finally {
+    // ✅ Hide loading indicator & re-enable the button after upload
+    document.getElementById("loadingIndicator").classList.add("hidden");
+    uploadButton.disabled = false;
+    uploadButton.textContent = "Upload";
   }
 }
 
@@ -218,9 +239,27 @@ document
   });
 
 function showPreview() {
-  const form = document.getElementById("tourForm");
-  if (!form.checkValidity()) {
-    form.reportValidity();
+  const city = document.getElementById("city");
+  const country = document.getElementById("country");
+  const tourTitle = document.getElementById("tour-title");
+  const description = document.getElementById("description");
+  const price = document.getElementById("price");
+  const duration = document.getElementById("duration");
+  const ageLimit = document.getElementById("age_limit");
+
+  // ✅ Ensure all fields exist before accessing their values
+  if (
+    !city ||
+    !country ||
+    !tourTitle ||
+    !description ||
+    !price ||
+    !duration ||
+    !ageLimit
+  ) {
+    alert(
+      "Error: One or more form fields are missing. Please check your HTML."
+    );
     return;
   }
 
@@ -231,103 +270,115 @@ function showPreview() {
     .join(", ");
 
   const previewContent = document.getElementById("previewContent");
+  if (!previewContent) {
+    alert("Error: Preview container not found.");
+    return;
+  }
+
   previewContent.innerHTML = `
-                <div class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><p class="font-medium text-gray-600">Location</p><p>${
-                          document.getElementById("city").value
-                        }, ${document.getElementById("country").value}</p></div>
-                        
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        
-                        <div><p class="font-medium text-gray-600">Tour Title</p><p>${
-                          document.getElementById("tour-title").value
-                        }</p></div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        
-                        <div><p class="font-medium text-gray-600">Description</p><p class="text-gray-700">${
-                          document.getElementById("description").value
-                        }</p></div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><p class="font-medium text-gray-600">Price</p><p>₦${
-                          document.getElementById("price").value
-                        }</p></div>
-                        
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><p class="font-medium text-gray-600">Duration</p><p>${
-                          document.getElementById("duration").value
-                        } hours</p></div>
-                        
-                    </div>
-                    <div><p class="font-medium text-gray-600">Age Range</p><p>${
-                      document.getElementById("min_age").value
-                    } - ${
-    document.getElementById("max_age").value
-  } years</p></div>
-                    <div><p class="font-medium text-gray-600">Available Days</p><p>${
-                      selectedDays || "None selected"
-                    }</p></div>
-                    <div><p class="font-medium text-gray-600">Selected Images</p><div class="grid grid-cols-4 gap-2 mt-2">${
-                      document.getElementById("imagePreview").innerHTML
-                    }</div></div>
-                </div>
-            `;
+      <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div><p class="font-medium text-gray-600">Location</p><p>${
+                city.value
+              }, ${country.value}</p></div>
+          </div>
+          <div><p class="font-medium text-gray-600">Tour Title</p><p>${
+            tourTitle.value
+          }</p></div>
+          <div><p class="font-medium text-gray-600">Description</p><p>${
+            description.value
+          }</p></div>
+          <div><p class="font-medium text-gray-600">Price</p><p>₦${
+            price.value
+          }</p></div>
+          <div><p class="font-medium text-gray-600">Duration</p><p>${
+            duration.value
+          } hours</p></div>
+          <div><p class="font-medium text-gray-600">Age Limit</p><p>${
+            ageLimit.value
+          } years</p></div>
+          <div><p class="font-medium text-gray-600">Available Days</p><p>${
+            selectedDays || "None selected"
+          }</p></div>
+          <div><p class="font-medium text-gray-600">Selected Images</p><div class="grid grid-cols-4 gap-2 mt-2">
+              ${document.getElementById("imagePreview")?.innerHTML || ""}
+          </div></div>
+      </div>
+  `;
 
-  // Add click event listeners to preview images
-  const previewImages = previewContent.querySelectorAll("#imagePreview img");
-  previewImages.forEach((img) => {
-    img.addEventListener("click", () => {
-      // Create overlay
-      const overlay = document.createElement("div");
-      overlay.classList.add(
-        "fixed",
-        "top-0",
-        "left-0",
-        "w-full",
-        "h-full",
-        "bg-black/80",
-        "z-50",
-        "flex",
-        "items-center",
-        "justify-center"
-      );
+  function enableImageZoom() {
+    const previewContent = document.getElementById("previewContent");
+    if (!previewContent) return;
 
-      // Create zoomed-in image
-      const zoomedImage = document.createElement("img");
-      zoomedImage.src = img.src;
-      zoomedImage.alt = "Enlarged Image";
-      zoomedImage.classList.add(
-        "max-w-screen-md",
-        "max-h-screen-md",
-        "transform",
-        "scale-150", // Increase size
-        "transition",
-        "duration-300"
-      );
+    // ✅ Select images inside previewContent, not #imagePreview directly
+    const previewImages = previewContent.querySelectorAll("img");
 
-      // Close button
-      const closeButton = document.createElement("button");
-      closeButton.innerHTML = "&times;";
-      closeButton.classList.add(
-        "absolute",
-        "top-4",
-        "right-4",
-        "text-white",
-        "text-4xl",
-        "cursor-pointer"
-      );
-      closeButton.addEventListener("click", () => overlay.remove());
+    previewImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        // ✅ Create overlay for zoom effect
+        const overlay = document.createElement("div");
+        overlay.classList.add(
+          "fixed",
+          "top-0",
+          "left-0",
+          "w-full",
+          "h-full",
+          "bg-black/80",
+          "z-50",
+          "flex",
+          "items-center",
+          "justify-center"
+        );
 
-      overlay.appendChild(zoomedImage);
-      overlay.appendChild(closeButton);
-      document.body.appendChild(overlay);
+        // ✅ Create zoomed-in image
+        const zoomedImage = document.createElement("img");
+        zoomedImage.src = img.src;
+        zoomedImage.alt = "Enlarged Image";
+        zoomedImage.classList.add(
+          "max-w-screen-md",
+          "max-h-screen-md",
+          "transform",
+          "scale-150", // ✅ Smooth zoom effect
+          "transition",
+          "duration-300",
+          "shadow-lg",
+          "rounded-lg"
+        );
+
+        // ✅ Close button
+        const closeButton = document.createElement("button");
+        closeButton.innerHTML = "&times;";
+        closeButton.classList.add(
+          "absolute",
+          "top-4",
+          "right-4",
+          "text-white",
+          "text-4xl",
+          "cursor-pointer"
+        );
+        closeButton.addEventListener("click", () => overlay.remove());
+
+        overlay.appendChild(zoomedImage);
+        overlay.appendChild(closeButton);
+        document.body.appendChild(overlay);
+      });
     });
-  });
+  }
+
+  // ✅ Call this function AFTER images are added to previewContent
+  function showPreview() {
+    const previewContent = document.getElementById("previewContent");
+    previewContent.innerHTML = `
+    <div class="space-y-4">
+        <p class="font-medium text-gray-600">Selected Images</p>
+        <div id="imagePreview" class="grid grid-cols-4 gap-2 mt-2">
+          ${document.getElementById("imagePreview")?.innerHTML || ""}
+        </div>
+    </div>
+  `;
+
+    enableImageZoom(); // ✅ Attach zoom functionality after loading images
+  }
 
   document.getElementById("inputPage").classList.add("hidden");
   document.getElementById("previewPage").classList.remove("hidden");
@@ -336,50 +387,4 @@ function showPreview() {
 function goBack() {
   document.getElementById("previewPage").classList.add("hidden");
   document.getElementById("inputPage").classList.remove("hidden");
-}
-
-async function submitForm() {
-  const formData = new FormData();
-  formData.append("city", document.getElementById("city").value);
-  formData.append("country", document.getElementById("country").value);
-  formData.append("Tour Title", document.getElementById("tour-title").value);
-  formData.append("description", document.getElementById("description").value);
-  formData.append("price", document.getElementById("price").value);
-  formData.append("min_age", document.getElementById("min_age").value);
-  formData.append("max_age", document.getElementById("max_age").value);
-  formData.append("duration", document.getElementById("duration").value);
-
-  const selectedDays = Array.from(
-    document.querySelectorAll('input[name="days"]:checked')
-  ).map((checkbox) => checkbox.value);
-  formData.append("available_days", selectedDays.join(", "));
-
-  const files = document.getElementById("uploaded_images").files;
-  for (let i = 0; i < files.length; i++) {
-    formData.append("images", files[i]);
-  }
-
-  try {
-    const response = await fetch(
-      "https://cors-anywhere.herokuapp.com/https://api.allicomtravels.com/tour/tourism-site/",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Token YOUR_API_TOKEN`,
-        },
-        body: formData,
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(await response.text());
-    }
-
-    alert("Tourism site uploaded successfully!");
-    window.location.reload();
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Error uploading site. Please try again.");
-  }
 }
