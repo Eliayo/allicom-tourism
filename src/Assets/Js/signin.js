@@ -181,7 +181,7 @@ class FormValidator {
 // -------------------------------
 
 // Constants
-const API_BASE_URL = "http://api.allicomtravels.com/";
+const API_BASE_URL = "https://api.allicomtravels.com/";
 const TOKEN_KEY = "authToken";
 // Form Handler Class
 class AuthFormHandler {
