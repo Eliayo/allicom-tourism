@@ -63,8 +63,8 @@ confirmPasswordField.addEventListener("input", validatePasswords);
 // Handle sign-up form submission
 document.getElementById("signup-form").addEventListener("submit", (e) => {
   e.preventDefault();
-  alert("Sign-Up Successful! Redirecting to Sign-In page...");
-  showForm("signin-form-container", "signup-details"); // Go back to Sign-In after Sign-Up
+  // alert("Sign-Up Successful! Redirecting to Sign-In page...");
+  // showForm("signin-form-container", "signup-details"); // Go back to Sign-In after Sign-Up
 });
 
 // Switch to Sign-In page
