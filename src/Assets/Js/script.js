@@ -2,46 +2,32 @@ const heroSection = document.getElementById("hero");
 const backgrounds = JSON.parse(heroSection.dataset.background);
 let currentIndex = 0;
 
-// Function to change the background image with a fade effect
-function changeBackground() {
-  heroSection.style.transition = "background-image 1s ease-in-out";
-  heroSection.style.backgroundImage = `url('${backgrounds[currentIndex]}')`;
+// ✅ Preload images to prevent loading lag
+const preloadImages = () => {
+  backgrounds.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+preloadImages();
 
-  currentIndex = (currentIndex + 1) % backgrounds.length;
+// ✅ Function to smoothly transition between images
+function changeBackground() {
+  const nextIndex = (currentIndex + 1) % backgrounds.length;
+  const nextImage = backgrounds[nextIndex];
+
+  // ✅ Instead of fading to white, fade directly to the next image
+  heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('${nextImage}')`;
+  heroSection.style.transition = "background-image 1s ease-in-out";
+
+  currentIndex = nextIndex;
 }
 
-// Start the slider
-setInterval(changeBackground, 5000); // Change image every 5 seconds
+// ✅ Set the first image immediately
+heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('${backgrounds[0]}')`;
 
-document.getElementById("mobile-menu-btn").addEventListener("click", () => {
-  const mobileMenu = document.getElementById("mobile-menu");
-  mobileMenu.classList.toggle("hidden");
-});
-
-//
-document.addEventListener("DOMContentLoaded", () => {
-  const images = document.querySelectorAll(".relative img");
-  let currentIndex = 0;
-
-  // Function to show the current image and hide the others
-  const showImage = (index) => {
-    images.forEach((img, idx) => {
-      img.classList.toggle("hidden", idx !== index);
-    });
-  };
-
-  // Function to move to the next image
-  const nextImage = () => {
-    currentIndex = (currentIndex + 1) % images.length; // Cycle through images
-    showImage(currentIndex);
-  };
-
-  // Start the slider with a set interval (e.g., 3 seconds)
-  setInterval(nextImage, 3000);
-
-  // Initial display
-  showImage(currentIndex);
-});
+// ✅ Start the slider (change image every 5 seconds)
+setInterval(changeBackground, 5000);
 
 //-----------------------------------------
 
