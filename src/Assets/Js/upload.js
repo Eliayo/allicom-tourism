@@ -140,10 +140,13 @@ async function submitForm() {
     parseInt(document.getElementById("duration").value, 10)
   );
 
+  // ✅ Convert selected checkboxes into the correct JSON format
   const selectedDays = Array.from(
     document.querySelectorAll('input[name="days"]:checked')
-  ).map((checkbox) => checkbox.value);
-  formData.append("available_days", JSON.stringify(selectedDays));
+  ).map((day) => ({
+    day_of_week: day.value.toLowerCase(), // Convert to lowercase (API expects "monday", "wednesday")
+    is_open: false, // Default value (change if necessary)
+  }));
 
   const files = document.getElementById("uploaded_images").files;
   for (let i = 0; i < files.length; i++) {
